@@ -17,15 +17,15 @@ export function getUserLocalStorage(): IUser | null {
 
 export async function LoginRequest(matricula: string, senha: string) {
   try {
-    const request = await api.post('/auth', {
+   /*  const request = await api.post('/auth', {
       matricula,
       senha,
-    })
-    /* const request = await api.post('/v2/usuarios/sessoes', {
+    }) */
+    const request = await api.post('/v2/usuarios/sessoes', {
       matricula,
       senha,
       sis_sigla: "SISFARD"
-    }) */
+    })
     console.log('LoginRequest', request.data)
     return request.data
   } catch (error) {

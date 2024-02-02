@@ -1,24 +1,23 @@
 import { Flex, Text, useToast } from "@chakra-ui/react";
-import React, { useState } from "react";
+import {  ChangeEvent, useState } from "react";
 import { FormLabelLogin } from "./components/formlabel";
 import { ButtonEnter } from "./components/button";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthProvider/useAuth";
-import { textMarshal } from "text-marshal";
+
 
 export const ViewLogin = () => {
 
   //console.log('view do login!')
   const [login, setLogin] = useState<string>('');
   const [password, setPassword] = useState<string>('');
-  const [count, setCount] = useState<number>(1);
   const [isLoading, setIsLoading] = useState(false);
 
   const toast = useToast();
   const auth = useAuth();
   const navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: ChangeEvent) => {
     e.preventDefault();
 
     //console.log("botão de login acionado")
@@ -83,7 +82,7 @@ export const ViewLogin = () => {
         </Flex>
 
         <Flex align="center" justify="center">
-          <ButtonEnter isDisabled={isLoading} handleSubmit={handleSubmit} />
+          <ButtonEnter isDisabled={isLoading} handleSubmit={ () => handleSubmit()  } />
 
         </Flex>
       </Flex>

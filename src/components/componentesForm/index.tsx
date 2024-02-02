@@ -1,4 +1,4 @@
-import { Button, Flex, VStack, useToast } from "@chakra-ui/react";
+import { Flex, VStack } from "@chakra-ui/react";
 import React, { ChangeEvent, useEffect, useState } from "react";
 
 import { LabelForm } from "./labels";
@@ -16,7 +16,7 @@ import { FaMapLocationDot } from "react-icons/fa6";
 import { TbNumber } from "react-icons/tb";
 import { CarSimple, Headlights } from "phosphor-react";
 import { FaTools } from "react-icons/fa";
-import { PiCarSimpleDuotone, PiCodepenLogoDuotone, PiSirenDuotone } from "react-icons/pi";
+import { PiCarSimpleDuotone, PiSirenDuotone } from "react-icons/pi";
 import { MdOutlineWifiFind } from "react-icons/md";
 import { TbCarCrash } from "react-icons/tb";
 import { InputImg } from "./inputImg";
@@ -62,7 +62,7 @@ export const FormAltVtr: React.FC<IFormAltVtr> = (props) => {
     }, [fetchedMotData, motLoading]);
 
     const { nomeCompleto, numeral, graduacao, opm, matricula } = motData;
-    //const [isloading, setIsLoading] = useState<boolean>(false)
+    const [isloading, setIsLoading] = useState<boolean>(false)
 
     const [formAltData, setFormAltData] = useState({
         Prefixo: "",
@@ -102,7 +102,7 @@ export const FormAltVtr: React.FC<IFormAltVtr> = (props) => {
         });
     };
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = async (e: { preventDefault: () => void; }) => {
         e.preventDefault();
 
         const data = {
